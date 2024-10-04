@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "target": "ES2015",
+        "module": "none", // Change this
+        "outDir": "built",
+        "strict": true
+    },
+    "exclude": ["node_modules"]
+}
