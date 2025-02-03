@@ -3,14 +3,15 @@
 # This file will test sets, tuples, lists, and dictionaries
 
 
-test_set = {'Apple', 'Cherry', 'Banana'}
+test_set = {'Apple', 'Cherry', 'Banana', 'Cherry'}
 
 print(test_set)
 test_set.add('Orange')
 print(test_set)
 test_set.add('Grape')
 print(test_set)
-test_set.
+test_set.add('Banana')
+print(test_set)
 
 test_tuple = (1, 2, 3, 4)
 
