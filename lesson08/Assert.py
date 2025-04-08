@@ -13,6 +13,8 @@ def my_assert(condition, code, function_name, file):
 for i in range(10):
     print(i, end = '')
 
+print()
+
 # print()
 
 if __debug__:

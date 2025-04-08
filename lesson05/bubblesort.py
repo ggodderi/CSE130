@@ -19,25 +19,29 @@ def find_middle_index(start, end):
 def binary_search(numbers, selection):
     start = 0
     end = len(numbers) - 1
-    mid = find_middle_index(start, end)
     found = False
     count = 0
     while start <= end and not found:
-        # print(start, mid, end)
+        mid = find_middle_index(start, end)
         count += 1
         if selection == numbers[mid]:
             found = True 
         elif selection < numbers[mid]:
             end = mid - 1
-            mid = find_middle_index(start, end)
         else:
             start = mid + 1
-            mid = find_middle_index(start, end)
-    print(f'Count is: {count}', end = ': ')
-    if found:
-        print(f'Found the number: {selection}')
-    else:
-        print(f'Number not found!')
+    
+    return found, count, mid
+
+
+def test_binary_search(numbers):
+    for i in range(100):
+        found, count, index = binary_search(numbers, i)
+        print(f'Count is: {count}', end = ': ')
+        if found:
+            print(f'Found the number: {i}, at index: {index}')
+        else:
+            print(f'Number not found!')
 
 def main():
     numbers = [ 23, 1, 45, 65, 89, 23, 1, 17, -12, 99, 14, 8, 27, 3]
@@ -49,11 +53,8 @@ def main():
     bubble_sort(numbers2)
     print(numbers2)
 
-    for i in range(100):
-        binary_search(numbers, i)
-    
-    for i in range(100):
-        binary_search(numbers2, i)
-        # assert len(numbers) == len_numbers
+    test_binary_search(numbers)
+    test_binary_search(numbers2)
+
 
 main()

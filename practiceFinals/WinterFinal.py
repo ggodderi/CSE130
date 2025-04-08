@@ -31,6 +31,33 @@ def write_file_data(filename, attendee_list):
     
     return attendee_list
 
+def remove_duplicate_names_fast(attendee_list):
+    assert attendee_list != ''
+    assert attendee_list != None
+    length = len(attendee_list)
+    assert length != 0 
+    unique_index = 0
+    for index in range(length-1):
+        # print(attendee_list[index], attendee_list[index+1])
+        if attendee_list[index] != attendee_list[index+1]:
+            attendee_list[unique_index] = attendee_list[index]
+            unique_index += 1
+        # print(attendee_list)
+
+
+    if attendee_list[len(attendee_list)-2] != attendee_list[len(attendee_list)-1]:
+            attendee_list[unique_index] = attendee_list[len(attendee_list)-1]
+    # print(attendee_list)
+
+    # print(unique_index, len(attendee_list)-1)
+    for index in range(unique_index, length-1):
+        # print(index)
+        attendee_list.pop()
+
+    for index in range(len(attendee_list)-1):
+        assert attendee_list[index] != attendee_list[index-1]
+    return attendee_list
+
 def remove_duplicate_names(attendee_list):
     '''Loop though all of the names in attendee_list and remove all of
        the duplicates.'''
@@ -111,6 +138,7 @@ def main():
     attendee_list = read_file_data(filename)
     attendee_list2 = attendee_list.copy()
     attendee_list3 = attendee_list.copy()
+    attendee_list4 = attendee_list.copy()
     attendee_list_single_name = remove_duplicate_names_second_array(attendee_list)
     print(attendee_list_single_name)
     attendee_list_single_name = remove_duplicate_names(attendee_list)
@@ -118,6 +146,8 @@ def main():
     attendee_list_single_name = remove_duplicate_names_in_reverse(attendee_list2)
     print(attendee_list_single_name)
     attendee_list_single_name = remove_duplicate_names_using_counts(attendee_list3)
+    print(attendee_list_single_name)
+    attendee_list_single_name = remove_duplicate_names_fast(attendee_list4)
     print(attendee_list_single_name)
 
     write_file_data('WinterFinalSingleNames.json', attendee_list)
