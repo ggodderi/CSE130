@@ -30,25 +30,23 @@ def create_emtpy_image(rows, columns):
 
 def decompress_image(rows, columns, compressed_data, empty_image):
     for column in range(columns):
-        print(compressed_data[column])
+        # print(compressed_data[column])
         # output_character = '*'
         count = 0
         row = 0  
         for d in compressed_data[column]:
-            print(d)          
+            # print(d)          
             if not count % 2:
                 output_character = '*'
             else:
                 output_character = ' '
             count += 1
             for r in range(d):
-                print(column, row, output_character)
+                # print(column, row, output_character)
                 empty_image[column][row] = output_character
-                print(empty_image[column][row])
+                # print(empty_image[column][row])
                 row += 1
 
-    
-    print(empty_image)
 
 def display_image(rows, columns, image_data):
     for row in range(rows):
@@ -59,7 +57,7 @@ def display_image(rows, columns, image_data):
 def main():
     filename = obtain_file_name()
     json_data = read_data_from_file(filename)
-    print(json_data)
+    # print(json_data)
 
     number_rows = json_data['num_rows']
     number_columns = json_data['num_columns']
@@ -67,9 +65,9 @@ def main():
 
     empty_image = create_emtpy_image(number_rows, number_columns)
     # empty_image[0][1] = 'A'
-    print(empty_image)
+    # print(empty_image)
 
     decompress_image(number_rows, number_columns, image_data, empty_image)
-    print(empty_image)
+    # print(empty_image)
     display_image(number_rows, number_columns, empty_image)
 main()
