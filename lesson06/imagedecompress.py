@@ -33,17 +33,20 @@ def decompress_image(rows, columns, compressed_data, empty_image):
         print(compressed_data[column])
         # output_character = '*'
         count = 0
-        for d in compressed_data[column]:  
+        row = 0  
+        for d in compressed_data[column]:
             print(d)          
             if not count % 2:
                 output_character = '*'
             else:
                 output_character = ' '
             count += 1
-            for row in range(d):
+            for r in range(d):
                 print(column, row, output_character)
                 empty_image[column][row] = output_character
                 print(empty_image[column][row])
+                row += 1
+
     
     print(empty_image)
 
