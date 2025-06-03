@@ -47,6 +47,7 @@ def advanced_search(data_array, search_word):
     return found, location, num_tries
 
 def display_results(found, search_word, location, num_tries):
+    '''Display the results of the search.'''
     # The word was found state so, otherwise state not found.
     if found:
         print(f'The word: {search_word} was found in the list at position {location} in {num_tries} searches.')

@@ -69,16 +69,17 @@ def advanced_search(data_array, search_word):
         # Trace Table
         print(f'Line 2: {istart:10} {icenter:10} {iend: 10} {found:10} {num_tries:10}')
     
-
-    # Trace Table
     print(f'Line 3: {istart:10} {icenter:10} {iend: 10} {found:10} {num_tries:10}')
+    return found, location, num_tries
+
+def display_results(found, location, search_word, num_tries):
+    # Trace Table
     # The word was found state so, otherwise state not found.
     if found:
         print(f'The word: {search_word} was found in the list at position {location} in {num_tries} searches.')
     else:
         print(f'The word: {search_word} was not found in the list.  {num_tries} searches were executed.')
     
-    return found
 
 
 # save_to_file(word_array)
@@ -99,20 +100,21 @@ def main():
 
     # TESTING - search for each word in the array.
     for word in data_array:
-        assert(advanced_search(data_array, word) == True)
+        assert(advanced_search(data_array, word)[0] == True)
 
     # Try some words that are not in the array.
-    assert(advanced_search(data_array, 'aaaa') == False)
-    assert(advanced_search(data_array, 'zzzz') == False)
-    assert(advanced_search(data_array, 'eeee') == False)
-    assert(advanced_search(data_array, 'ssss') == False)
+    assert(advanced_search(data_array, 'aaaa')[0] == False)
+    assert(advanced_search(data_array, 'zzzz')[0] == False)
+    assert(advanced_search(data_array, 'eeee')[0] == False)
+    assert(advanced_search(data_array, 'ssss')[0] == False)
 
     # Allow the user to search for words
     searching = True
     while searching:
         search_word = input('For which word do you wish to search (q to quit)? ')
         if search_word.lower() != 'q':
-            advanced_search(data_array, search_word)
+            found, location, num_tries = advanced_search(data_array, search_word)
+            display_results(found, location, search_word, num_tries)
         else:
             searching = False
 
