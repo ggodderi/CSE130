@@ -4,6 +4,8 @@ import math
 # Check to see if a number is a prime number.
 
 def is_number_prime(number):
+    '''Return true if a number is Prime. 
+    Only have to test up to the square root of a number.'''
     if number <= 1:
         return False
     elif number == 2:
