@@ -19,7 +19,7 @@ def obtain_user_radius():
             if radius <= 0:
                 done = False
                 print('Radius must be > 0.  Please enter number > 0:')
-        except (TypeError, ValueError):
+        except (TypeError, ValueError) :
             done = False
             print('Must enter a number.')
     return radius

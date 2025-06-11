@@ -55,7 +55,6 @@ def display_results(found, search_word, location, num_tries):
         print(f'The word: {search_word} was not found in the list.  {num_tries} searches were executed.')
     
 
-
 def main():
     '''Run the program.  Ask the user for a name for which to search.  Then search for it.'''
 
