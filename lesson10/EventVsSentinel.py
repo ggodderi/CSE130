@@ -11,8 +11,8 @@ while age <= 0 or age >= 120:
     age = int(input('Please enter your age: '))
 
 
-# Senteniel:
-print('Senteniel: ')
+# Sentinel:
+print('Sentinel: ')
 done = False
 while not done:
     age = int(input('Please enter your age: '))

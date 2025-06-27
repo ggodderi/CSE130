@@ -38,20 +38,28 @@ def is_number_prime2(number):
 
 def ask_user_for_number():
     done = False
+    number = 0
     while not done:
-        number = int(input('Please input the number for which the is prime test will be conducted: (0 to quit) '))
-        if number == 0:
-            done = True
-        else:
-            is_prime = is_number_prime2(number)
-            if is_prime:
-                print(f'{number} is a Prime number')
-            else:
-                print(f'{number} is a NOT Prime number')
-        
-def test_is_number_prime():
+        try:
+            number = int(input('Please input the number for which the is prime test will be conducted: (0 to quit) '))
+            if number >= 0:
+                done = True
+            else: 
+                raise TypeError
+        except (ValueError,TypeError):
+            print('Please input an integer number. ')
+    return number
+
+def output_number_is_prime(number):
+    is_prime = is_number_prime2(number)
+    if is_prime:
+        print(f'{number} is a Prime number')
+    else:
+        print(f'{number} is a NOT Prime number')
+
+def test_is_number_prime(number):
     prime_numbers = []
-    for n in range(1, 1001):
+    for n in range(1, number):
         is_prime = is_number_prime2(n)
         if is_prime:
             prime_numbers.append(n)
@@ -59,7 +67,12 @@ def test_is_number_prime():
     print(f'The prime numbers below 1000 is: {prime_numbers}')
 
 def main():
-    test_is_number_prime()
-    ask_user_for_number()
+    test_is_number_prime(10001)
+    number = -1
+
+    while number != 0:
+        number = ask_user_for_number()
+        if number != 0:
+            output_number_is_prime(number)
 
 main()
