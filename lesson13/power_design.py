@@ -10,7 +10,7 @@ def load_data(file_name):
         dictionary_data = json.loads(json_data)
         return dictionary_data['array']
     
-def get_power_in_a_range(sample_size, data):
+def get_power_in_sample(sample_size, data):
     '''Find the largest average sum from the data given a sample_size.
     Examine every sample_size sub segment of the data array.  Calculate its total.
     # Return a list of all of the totals and also the largest average total.'''
@@ -61,13 +61,20 @@ def obtain_sample_size():
     
     return sample_size
 
+def test_get_power_in_sample(file_name):
+    '''Test every sample size associated with the data, plus 3 extra'''
+    data = load_data(file_name)
+    for i in range(len(data)+4):
+        totals, largest_average = get_power_in_sample(i, data)
+        print(largest_average)
 
 def main():
     file_name = obtain_file_name()
+    test_get_power_in_sample(file_name)
     sample_size = obtain_sample_size()
     data = load_data(file_name)
     print(data)
-    totals, largest_average = get_power_in_a_range(sample_size, data)
+    totals, largest_average = get_power_in_sample(sample_size, data)
     print(totals, largest_average)
 
 main()
