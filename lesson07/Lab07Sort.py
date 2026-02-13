@@ -43,7 +43,7 @@ def sort_word_list(data_list):
 
     print(f'Length: {len(data_list)}, loop counts: {counter}')
 
-# Main function for convience
+# Main function for convenience
 def main():
 
     file_name = input('Please input the name of the file containing the unsorted list of items: ')
