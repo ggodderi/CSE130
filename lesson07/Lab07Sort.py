@@ -26,11 +26,9 @@ def sort_data_list(data_list):
     counter = 0
 
     # Loop through the entire list
-    # while i_pivot >= 0:
     for i_pivot in range(len(data_list)-1, -1, -1):
 
         # check will start one less than pivot and move to the left
-        # for i_check in range(i_pivot-1, -1, -1):
         for i_check in range(0, i_pivot, 1):
             counter += 1
             if data_list[i_check] > data_list[i_largest]:
@@ -41,7 +39,6 @@ def sort_data_list(data_list):
             (data_list[i_pivot], data_list[i_largest]) = (data_list[i_largest], data_list[i_pivot])
     
         # Move pivot and largest back to the left by 1
-        # i_pivot -= 1
         i_largest = i_pivot - 1
 
     print(f'Length: {len(data_list)}, loop counts: {counter}')

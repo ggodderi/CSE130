@@ -38,7 +38,7 @@ def obtain_user_radius():
             else:
                 print('Please enter a value > 0')
         except (TypeError, ValueError, ZeroDivisionError):
-            print('Invalid valud, please input a number > 0.')
+            print('Invalid valid, please input a number > 0.')
 
     return radius
 

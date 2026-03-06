@@ -23,7 +23,7 @@ def obtain_file_name():
     filename = input('Please input the filename: ')
     return filename
 
-def create_emtpy_image(rows, columns):
+def create_empty_image(rows, columns):
     '''Create an empty image with the given number for rows and columns.'''
     empty_image = []
 
@@ -84,9 +84,9 @@ def main():
     # Get the image information
     number_rows = json_data['num_rows']
     number_columns = json_data['num_columns']
-    image_data = json_data['data']
+    image_data = json_data['data' ]
 
-    decompressed_image = create_emtpy_image(number_rows, number_columns)
+    decompressed_image = create_empty_image(number_rows, number_columns)
     # print(empty_image)
 
     decompress_image(number_columns, image_data, decompressed_image)
