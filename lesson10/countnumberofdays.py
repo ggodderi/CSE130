@@ -84,16 +84,16 @@ def get_dates():
     while not received_valid_dates:
 
         # Get the Start day
-        start_day = get_int_input_value(1, 31, "Input Start Day: ")
         start_month = get_int_input_value(1, 12, "Input Start Month: ")
         start_year = get_int_input_value(1753, 9999999, "Input Start Year: ")
+        start_day = get_int_input_value(1, days_in_month(start_month, start_year), "Input Start Day: ")
 
         start_date = (start_day, start_month, start_year)
 
         # Get the end day
-        end_day = get_int_input_value(1, 31, "Input End Day: ")
         end_month = get_int_input_value(1, 12, "Input End Month: ")
         end_year = get_int_input_value(1753, 9999999, "Input End Year: ")
+        end_day = get_int_input_value(1, days_in_month(end_month, end_year), "Input End Day: ")
         end_date = (end_day, end_month, end_year)
         
         received_valid_dates = validate_dates(start_date, end_date)
@@ -122,10 +122,10 @@ def calculate_days_partial_year(start_month, end_month, year):
     of the specified year.'''
     number_of_days = 0
     assert start_month >= 1 and start_month <= 12
-    assert end_month >= 1 and end_month <= 12
+    assert end_month >= 1 and end_month <= 13
     assert start_month <= end_month
 
-    for month in range(start_month, end_month + 1, 1):
+    for month in range(start_month, end_month, 1):
         number_of_days += days_in_month(month, year)
     assert number_of_days >= 0
     return number_of_days
@@ -143,14 +143,14 @@ def calculate_number_of_days(start_date, end_date):
     # From the same year
     elif start_date[YEAR_INDEX] == end_date[YEAR_INDEX]:
         number_of_days = days_in_month(start_date[MONTH_INDEX], start_date[YEAR_INDEX]) - start_date[DAY_INDEX]
-        number_of_days += calculate_days_partial_year(start_date[MONTH_INDEX] + 1, end_date[MONTH_INDEX] - 1,\
+        number_of_days += calculate_days_partial_year(start_date[MONTH_INDEX] + 1, end_date[MONTH_INDEX],\
                                                       start_date[YEAR_INDEX])
         number_of_days += end_date[DAY_INDEX]
     # Different years
     else:
         # Days from starting year:
         number_of_days = days_in_month(start_date[MONTH_INDEX], start_date[YEAR_INDEX]) - start_date[DAY_INDEX]
-        number_of_days += calculate_days_partial_year(start_date[MONTH_INDEX] + 1, 12, start_date[YEAR_INDEX])
+        number_of_days += calculate_days_partial_year(start_date[MONTH_INDEX] + 1, 13, start_date[YEAR_INDEX])
 
         # Days from the full years
         for year in range(start_date[YEAR_INDEX] + 1, end_date[YEAR_INDEX], 1):
