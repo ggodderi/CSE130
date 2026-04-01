@@ -3,7 +3,7 @@
 # Calculate the powers of 2
 
 
-number = int(input('Input the number of the power of 2 you wish to calcualte: '))
+number = int(input('Input the number of the power of 2 you wish to calculate: '))
 
 # Counter Controlled, use exponent/power (**) 
 for n in range(number + 1):
